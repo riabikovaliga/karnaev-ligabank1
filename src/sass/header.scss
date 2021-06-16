@@ -1,0 +1,385 @@
+.header {
+  background-color: $color-white;
+}
+
+.header__wrapper {
+  display: flex;
+
+  width: $desktop-width-max;
+  min-height: 91px;
+
+  font-weight: 400;
+
+  margin: auto;
+  padding-right: 35px;
+  padding-left: 96px;
+}
+
+.header__burger-button {
+  display: none;
+}
+
+.header__logo {
+  position: relative;
+
+  width: 170px;
+
+  font-weight: bold;
+  font-size: 20px;
+
+  line-height: 91px;
+
+  color: $color-dark-blue;
+
+  letter-spacing: 1.3px;
+
+  padding-left: 38px;
+
+  &::before {
+    @include background-image("../img/logo-desktop.svg", 30px, 27px);
+
+    top: 26px;
+    left: 1px;
+  }
+}
+
+.header__close-button {
+  display: none;
+}
+
+.header__nav-wrapper {
+  display: flex;
+}
+
+.header__nav-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  list-style: none;
+
+  width: 600px;
+
+  margin: 0 0 0 86px;
+  padding: 0;
+}
+
+.header__nav-link {
+  display: block;
+  text-align: center;
+
+  color: $color-dark-blue;
+
+  margin-right: 15px;
+  padding: 37px 5px 35px 5px;
+
+  &:hover,
+  &:focus {
+    color: $color-bright-blue;
+  }
+}
+
+.header__login {
+  display: block;
+  position: relative;
+
+  width: 310px;
+
+  text-align: center;
+  color: $color-dark-blue;
+
+  margin-left: 70px;
+  padding: 37px 22px 35px 32px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+
+    top: 34px;
+    left: 44px;
+
+    width: 20px;
+    height: 22px;
+
+    background-image: url("../img/icon-login.svg");
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: $tablet-width-max) {
+  .header__wrapper {
+    @include block-centered($tablet-width-min);
+
+    min-height: 69px;
+
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+
+  .header__logo {
+    width: 150px;
+
+    font-weight: bold;
+
+    font-size: 18px;
+    line-height: 60px;
+
+    letter-spacing: 1.1px;
+
+    padding-top: 9px;
+    padding-left: 42px;
+
+    &::before {
+      @include background-image("../img/logo-tablet.svg", 26px, 24px);
+
+      top: 22px;
+      left: 9px;
+    }
+  }
+
+  .header__nav-wrapper {
+    width: 550px;
+  }
+
+  .header__nav-list {
+    width: 440px;
+
+    margin-left: 54px;
+  }
+
+  .header__nav-link {
+    font-size: 14px;
+    line-height: 16px;
+
+    margin-right: 11px;
+    padding: 29px 5px 24px 5px;
+  }
+
+  .header__login {
+    width: 30px;
+
+    margin-left: 24px;
+    padding: 12px 12px 12px 0;
+
+    &::before {
+      top: 23px;
+      left: 0;
+    }
+  }
+
+  .header__login-title {
+    display: none;
+  }
+}
+
+@media (max-width: $mobile-width-max) {
+  .header__wrapper {
+    @include block-centered($mobile-width-min);
+    position: relative;
+
+    flex-wrap: wrap;
+
+    min-height: 48px;
+
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .header__burger-button  {
+    position: absolute;
+    top: 23px;
+    left: 19px;
+
+    display: block;
+    width: 16px;
+    height: 10px;
+
+    padding: 0;
+
+    background-color: transparent;
+
+    cursor: pointer;
+    border: none;
+    outline: none;
+
+    z-index: 1;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: -5px;
+      left: -4px;
+
+      width: 16px;
+      height: 2px;
+
+      background-color: $color-dark-blue;
+      box-shadow: 0 5px 0 0 $color-dark-blue, 0 10px 0 0 $color-dark-blue;
+    }
+  }
+
+  .header__logo {
+    width: 150px;
+
+    font-size: 16px;
+    line-height: 19px;
+
+    margin-left: 25px;
+    padding-top: 16px;
+    padding-right: 16px;
+    padding-left: 31px;
+
+    &::before {
+      @include background-image("../img/logo-mobile.svg", 26px, 24px);
+
+      top: 14px;
+      left: 4px;
+    }
+  }
+
+  .header__close-button {
+    &--opened {
+      position: absolute;
+      display: block;
+
+      top: 10px;
+      right: 19px;
+
+      width: 13px;
+      height: 13px;
+
+      background-color: transparent;
+
+      cursor: pointer;
+      border: none;
+      outline: none;
+
+      &::before,
+      &::after {
+        content: "";
+
+        position: absolute;
+        top: 11px;
+        left: 1px;
+
+        width: 19px;
+        height: 2px;
+
+        background-color: $color-blue;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+        box-shadow: none;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  .header__nav-wrapper {
+    position: relative;
+
+    flex-direction: column;
+
+    width: 290px;
+  }
+
+  .header__nav {
+    display: none;
+
+    &--opened {
+      display: block;
+
+      margin-top: 44px;
+    }
+  }
+
+  .header__nav-list {
+    display: flex;
+    flex-direction: column;
+    align-content: baseline;
+
+    width: 290px;
+
+    margin: 0;
+  }
+
+  .header__nav-link {
+    display: block;
+
+    text-align: start;
+
+    font-size: 16px;
+    line-height: 19px;
+
+    width: 260px;
+
+    margin-right: 0;
+    margin-bottom: -1px;
+    padding: 21px 15px 19px;
+
+    @include bordered;
+  }
+
+  .header__login {
+    position: absolute;
+
+    top:-27px;
+    right: 0;
+
+    width: 14px;
+    height: 16px;
+
+    margin: 0;
+    padding: 0;
+
+    &::before {
+      top: 1px;
+      right: 37px;
+
+      width: 14px;
+      height: 16px;
+
+      background-image: url("../img/icon-login-mobile.svg");
+    }
+
+    &--opened {
+      position: relative;
+      display: block;
+
+      top: 0;
+
+      text-align: start;
+
+      width: 230px;
+
+      margin-bottom: 305px;
+      margin-left: 0;
+      padding: 21px 15px 22px 45px;
+
+      @include bordered;
+
+      &::before {
+        top: 18px;
+        left: 15px;
+
+        width: 20px;
+        height: 22px;
+
+        background-image: url("../img/icon-login.svg");
+      }
+    }
+  }
+
+  .header__login-title {
+    display: none;
+
+    &--opened {
+      display: block;
+    }
+  }
+}
